@@ -7,13 +7,15 @@ class Settings(BaseSettings):
     db_user: str
     db_password: str
     db_name: str
-    
+
     max_file_size_mb: int
     allowed_file_types: list[str]
-    
+
+    api_prefix: str = "/api"
+
     images_dir: str
     logs_dir: str
-    
+
     class Config:
         env_file = ".env"
         extra = "ignore"

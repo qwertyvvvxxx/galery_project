@@ -2,6 +2,7 @@ import json
 from http.server import BaseHTTPRequestHandler
 
 from utils.encoders import AppJSONEncoder
+from config import settings
 
 
 class BaseHandler(BaseHTTPRequestHandler):
@@ -16,6 +17,12 @@ class BaseHandler(BaseHTTPRequestHandler):
     def _send_error(self, status_code: int, message: str):
         self._send_json(status_code, {"error": message})
         
+        
+    def _path_parts(self) -> list | None:
+        if not self.path.startswith(settings.api_prefix):
+            return
+        return [part for part in self.path.split("?")[0].split("/") if part not in ["", "api"]]
+       
         
     def do_OPTIONS(self):
         self.send_response(204)

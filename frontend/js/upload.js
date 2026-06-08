@@ -8,9 +8,10 @@
     /* --------------------------------------------------------------------
      *  CONSTANTS
      * ------------------------------------------------------------------ */
-    const API_UPLOAD_URL = `http://localhost:8000/upload/`;
-    const API_IMAGES_URL = `http://localhost:8000/images`;
-    const API_DELETE_URL = (fn) => `http://localhost:8000/images/${encodeURIComponent(fn)}`;
+    const API = window.APP_CONFIG.baseUrl;
+    const API_UPLOAD_URL = `${API}/api/upload/`;
+    const API_IMAGES_URL = `${API}/api/images`;
+    const API_DELETE_URL = (fn) => `${API}/api/images/${encodeURIComponent(fn)}`;
 
     const LS_KEYS = {
         LIMIT: 'image_host_limit',
@@ -19,8 +20,8 @@
     };
 
     const DEFAULT_PAGE = 1;
-    const DEFAULT_LIMIT = 10;
-    const AVAILABLE_LIMITS = [10];
+    const DEFAULT_LIMIT = 8;
+    const AVAILABLE_LIMITS = [4, 8, 12];
     const DEFAULT_TAB = 'upload';
     const DEFAULT_SORT_ORDER = 'desc';
     const VALID_TABS = ['upload', 'images'];
